@@ -82,9 +82,9 @@ server <- function(input, output){
       z = ~share_death, color = ~share_death, colors = 'Reds',
       text = ~Entity, locations = ~Code, marker = list(line = l)
     )
-    fig <- fig %>% colorbar(title = 'Share of infected population', ticksuffix = '%', thickness = 15)
+    fig <- fig %>% colorbar(title = 'Share of Death population', ticksuffix = '%', thickness = 15)
     fig <- fig %>% layout(
-      title = 'Share of infected population HIV',
+      title = 'Share of Death population - HIV',
       geo = g
     )
     fig
