@@ -68,6 +68,8 @@ colnames(death_rates_age_world)[9] <- "all"
 death_rates_age_world <- death_rates_age_world %>% drop_na(Code)
 death_rates_age_world <- death_rates_age_world %>% filter(Entity == "World")
 
+hiv_tweet <- read_csv("data/hiv_tweet.csv")
+
 # Get World Map
 
 world_map <- map_data("world")
@@ -184,7 +186,13 @@ ui <- fluidPage(
     p("The number of people who receive ART has increased significantly in recent years, especially in African countries where the prevalence of HIV/AIDS is the highest. You can see this in the map. In 2005 only 2 million people received ART; by 2018 this figure has increased more than ten-fold to 23 million.11"),
     plotOutput(outputId = "educ_graph",
                height = "400px",
-               width = "700px")
+               width = "700px"),
+
+#------------------------------------------------------------------------- 
+  h2("HIV related Text Analysis"),
+    plotOutput(outputId = "wordcloud",
+               height = "400px",
+               width = "700px"),
 )
 
 server <- function(input, output){
@@ -301,8 +309,26 @@ server <- function(input, output){
             plot.title = element_text(colour = alpha('black')))
   })
 
+# Word Cloud  
+  hiv_tweet$text <- str_trim(gsub("[A-Z]{2,}","",hiv_tweet$text))
+  hiv_tweet_corpus = Corpus(VectorSource(hiv_tweet$text))
+  hiv_tweet_corpus = tm_map(hiv_tweet_corpus, content_transformer(tolower))
+  hiv_tweet_corpus = tm_map(hiv_tweet_corpus, removeNumbers)
+  hiv_tweet_corpus = tm_map(hiv_tweet_corpus, removePunctuation)
+  hiv_tweet_corpus = tm_map(hiv_tweet_corpus, removeWords, c("the", "and", stopwords("english")))
+  hiv_tweet_corpus =  tm_map(hiv_tweet_corpus, stripWhitespace)
+  #Create a DTM successful
+  hiv_dtm <- DocumentTermMatrix(hiv_tweet_corpus)
   
+  freq_s = data.frame(sort(colSums(as.matrix(hiv_dtm)), 
+                           decreasing=TRUE))
   
+  output$wordcloud <- renderPlot({
+    wordcloud(rownames(freq_s), 
+              freq_s[,1], 
+              max.words=100, 
+              colors=brewer.pal(4, "Dark2"))
+  })
   
   output$art_map<- renderPlotly({
     artmap_year <- art %>% filter(Year == input$year_choose)
