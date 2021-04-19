@@ -1,5 +1,5 @@
 # import all the libraries
-
+library(bslib)
 library(shiny)
 library(maps)
 library(mapproj)
@@ -12,6 +12,7 @@ library(selectr)
 library(reshape2)
 library(RColorBrewer)
 library(plotly)
+library(shinythemes)
 
 # Import all the data & Rename data 
 
@@ -33,9 +34,9 @@ colnames(death_rates_age)[8] <- "50-69"
 colnames(death_rates_age)[9] <- "all"
 
 art <- read_csv("data/art_hiv.csv")
-colnames(art)[4] <- "Coverage"
-
 educ <- read_csv("data/educ_hiv.csv")
+
+colnames(art)[4] <- "Coverage"
 colnames(educ)[4] <- "Knowledge"
 
 # Clean Data
@@ -65,85 +66,103 @@ world_map <- fortify(world_map)
 
 region <- unique(new_cases$Entity)
 
-
 #Create shiny interface/server
-ui <- navbarPage("HIV",
-  #create panel for shares of infected population
-  tabPanel("Share of Population Infected with HIV", 
-            titlePanel("Share of Population Infected with HIV"),
-            
-            #create a slider with year in data range (1990-2017)
-            sliderInput(inputId = "year1",
-                        label = "Choose a year",
-                        value = 2017, min = 1990, max = 2017, width = "500px"),
-            
-            #plot map
-            plotlyOutput(outputId = "share_map",
-                       height = "800px",
-                       width = "800px")
-  ),
+
+ui <- fluidPage(
+  theme = bs_theme(version = 4,bootswatch = "minty"),   
+  h1("Global Distribution of HIV & Severity & Prevention"),
   
-  #create panel for Number of New Infections Each Year
-  tabPanel("Number of New Infections Each Year",
-             titlePanel("Number of New Infections Each Year"),
-             
-             #create a slider with year in data range (1990-2017)
-             sliderInput(inputId = "year2",
-                         label = "Choose a year",
-                         value = 2017, min = 1990, max = 2017, width = "500px"),
-             
-             #plot map
-             plotlyOutput(outputId = "newcase_map",
-                        height = "800px",
-                        width = "800px")
-  ),
+#-------------------------------------------------------------------------  
+  h2("Introduction"), 
+    p(a(href = "https://ourworldindata.org/hiv-aids#the-global-distribution-of-deaths-from-hiv-aids", 
+        "Data Source (ourworldindata.org)")),
+    p("An infection with HIV (human immunodeficiency virus) can lead to AIDS (acquired immunodeficiency syndrome). AIDS results in a gradual and persistent decline and failure of the immune system, resulting in heightened risk of life-threatening infection and cancers. In the majority of cases, HIV is a sexually-transmitted infection. However, HIV can also be transmitted from a mother to her child, during pregnancy or childbirth, or through breastfeeding. Non-sexual transmission can also occur through the sharing of injection equipment such as needles."),
   
-  # Share of Death
-  tabPanel("Share of Population Death because of HIV", 
-           titlePanel("Death Rate of HIV"),
-           
-           sliderInput(inputId = "year",
-                       label = "Choose a year",
-                       value = 2000, 
-                       min = 1990, 
-                       max = 2017),
-           
-           selectInput(inputId = "age_group",
-                       label = "Choose a age group",
-                       choices = c("<=5" = "1990",
-                                   ">=70" = "1995",
-                                   "5-14" = "2000",
-                                   "15-49" = "2005",
-                                   "50-69" = "2010",
-                                   "all" = "2017")),
-           
-           plotlyOutput(outputId = "death_share_map",
-                        height = "800px",
-                        width = "1200px")
-  ),
-  
-  # ART
-  tabPanel("Antiretroviral Therapy Coverage of Infected Population", 
-           titlePanel("Antiretroviral Therapy Coverage of Infected Population"),
-           
-           sliderInput(inputId = "year_choose",
-                       label = "Choose a year",
-                       value = 2017, min = 2000, max = 2017, width = "500px"),
-           
-           plotlyOutput(outputId = "art_map",
-                        height = "900px",
-                        width = "1200px")
-  ),
-  
-  # Education
-  tabPanel("Education on AIDS prevetion among young people", 
-           titlePanel(" Top 10 Countries of Education on AIDS prevetion among young people in 2016"),
-           
-           plotOutput(outputId = "educ_graph",
-                      height = "900px",
-                      width = "1200px")
-  )
-  
+    img(src = "WHO-HIV-Data.jpg", height = 450, width = 900),
+    br(), br(),
+
+  h3("This is an R Shiny interface to provide worldwide HIV related insights"),
+    p("HIV/AIDS is one of the world’s most fatal infectious diseases – particularly across Sub-Saharan Africa, where the disease has had a massive impact on health outcomes and life expectancy in recent decades.
+    
+    The Global Burden of Disease is a major global study on the causes of death and disease published in the medical journal The Lancet.1 These estimates of the annual number of deaths by cause are shown here. This chart is shown for the global total, but can be explored for any country or region using the “change country” toggle.
+    
+    In the chart we see that, globally, it is the second most fatal infectious disease.
+    
+    According to the Global Burden of Disease study, almost one million (954,000) people died from HIV/AIDS in 2017. To put this into context: this was just over 50% higher than the number of deaths from malaria in 2017.
+    
+    It’s one of the largest killers globally; but for some countries – particularly across Sub-Saharan Africa, it’s the leading cause of death. If we look at the breakdown for South Africa, Botswana or Mozambique – which you can do on the interactive chart – we see that HIV/AIDS tops the list. For countries in Southern Sub-Saharan Africa, deaths from HIV/AIDS are more than 50% higher than deaths from heart disease, and more than twice that of cancer deaths."),
+
+#-------------------------------------------------------------------------      
+  h2("Share of Population Infected with HIV"),    
+    p("Between 1996 and 2001 more than 3 million people were infected with HIV ever year. Since then the number of new infections began to decline and in 2017 it was reduced to below 2 million. The lowest number of new infections since 1990."),
+    #create a slider with year in data range (1990-2017)
+    sliderInput(inputId = "year1",
+                label = "Choose a year",
+                value = 2017, min = 1990, max = 2017, width = "500px"),
+    
+    #plot map
+    plotlyOutput(outputId = "share_map",
+                 height = "800px",
+                 width = "1200px"),   
+
+#-------------------------------------------------------------------------   
+  h2("Number of New Infections Each Year"),
+    #create a slider with year in data range (1990-2017)
+    sliderInput(inputId = "year2",
+                label = "Choose a year",
+                value = 2017, min = 1990, max = 2017, width = "500px"),
+    
+    #plot map
+    plotlyOutput(outputId = "newcase_map",
+                 height = "800px",
+                 width = "1200px"), 
+
+#-------------------------------------------------------------------------    
+  h2("Share of Population Death because of HIV"), 
+  h3("This plot will be ploting the Death Rate"),
+    p("Globally, 1.7% of deaths were caused by HIV/AIDS in 2017.
+                  This share is high, but masks the wide variations in the toll of HIV/AIDS across the world. In some countries, this share was much higher."),
+    p("In the interactive map we see the share of deaths which resulted from HIV/AIDS across the world. Across most regions the share was low: across Europe, for example, it accounted for less than 0.1% of deaths.
+                  But across some countries – focused primarily in Southern Sub-Saharan Africa – the share is very high. More than 1-in-4 of deaths (28%) in South Africa and Botswana were caused by HIV/AIDS in 2017. 
+                  The share was also very high across Mozambique (24%); Namibia (23%); Zambia (18%); Kenya (17%); and Congo (15%)."),
+    
+    sliderInput(inputId = "year",
+                label = "Choose a year",
+                value = 2000, 
+                min = 1990, 
+                max = 2017),
+    
+    selectInput(inputId = "age_group",
+                label = "Choose a age group",
+                choices = c("<=5" = "1990",
+                            ">=70" = "1995",
+                            "5-14" = "2000",
+                            "15-49" = "2005",
+                            "50-69" = "2010",
+                            "all" = "2017")),
+    
+    plotlyOutput(outputId = "death_share_map",
+                 height = "800px",
+                 width = "1200px"),
+
+#-------------------------------------------------------------------------      
+  h2("Antiretroviral Therapy Coverage of Infected Population"), 
+    p("A couple of decades ago, the chances of surviving more than ten years with HIV were slim. Today, thanks to antiretroviral therapy (ART), people with HIV/AIDS can expect to live long lives. 
+      ART is a mixture of antiviral drugs that are used to treat people infected with human immunodeficiency virus (HIV). ART is an essential player in making progress against HIV/AIDS because it saves lives, allows people with HIV to live longer, and prevents new HIV infections. "),
+    sliderInput(inputId = "year_choose",
+                label = "Choose a year",
+                value = 2017, min = 2000, max = 2017, width = "500px"),
+    
+    plotlyOutput(outputId = "art_map",
+                 height = "800px",
+                 width = "1200px"),
+
+#-------------------------------------------------------------------------  
+  h2("Education on AIDS prevetion among young people"),
+    p("The number of people who receive ART has increased significantly in recent years, especially in African countries where the prevalence of HIV/AIDS is the highest. You can see this in the map. In 2005 only 2 million people received ART; by 2018 this figure has increased more than ten-fold to 23 million.11"),
+    plotOutput(outputId = "educ_graph",
+               height = "500px",
+               width = "800px")
 )
 
 server <- function(input, output){
