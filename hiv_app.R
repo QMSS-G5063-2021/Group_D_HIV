@@ -13,6 +13,8 @@ library(reshape2)
 library(RColorBrewer)
 library(plotly)
 library(shinythemes)
+library(tm)
+library(wordcloud)
 
 # Import all the data & Rename data 
 
