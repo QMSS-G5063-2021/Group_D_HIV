@@ -15,12 +15,15 @@ https://ourworldindata.org/hiv-aids#education-on-hiv-aids
 
 ### Group members: Tong Shen, Zehui Wang, Wenxuan Zhang
 
-*Tong Shen*: ts3341@columbia.edu
+**Tong Shen**: ts3341@columbia.edu
 
-*Zehui Wang*: zw2525@columbia.edu
+**Zehui Wang**: zw2525@columbia.edu
 
-*Wenxuan Zhang*: wz2538@columbia.edu
+**Wenxuan Zhang**: wz2538@columbia.edu
 
-*ShinyApp URL*: https://shiroz1212.shinyapps.io/Final_Project_Group_D_HIV/
 
-*Presentation Video*: https://www.youtube.com/watch?v=BFU6DV25VVo
+### Final Project
+
+**ShinyApp URL**: https://shiroz1212.shinyapps.io/Final_Project_Group_D_HIV/
+
+**Presentation Video**: https://www.youtube.com/watch?v=BFU6DV25VVo
