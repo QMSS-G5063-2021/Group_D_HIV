@@ -194,10 +194,9 @@ ui <- fluidPage(
 #------------------------------------------------------------------------- 
   h2("HIV Can Be Prevented "), 
   h4("Antiretroviral Therapy Coverage of Infected Population"), 
-    p("A couple of decades ago, the chances of surviving more than ten years with HIV were slim. 
-      Today, thanks to antiretroviral therapy (ART), people with HIV/AIDS can expect to live long lives. 
-      ART is a mixture of antiviral drugs that are used to treat people infected with human immunodeficiency virus (HIV). 
-      ART is an essential player in making progress against HIV/AIDS because it saves lives, allows people with HIV to live longer, and prevents new HIV infections. "),
+    p("Antiretroviral therapy (ART) is a mixture of antiviral drugs that are used to treat people infected with HIV. It allows people with HIV to live longer and prevents new HIV infections. Thanks to antiretroviral therapy (ART), people with HIV/AIDS can expect to live long lives. 
+From this interactive map of ART coverage of the world, it shows what percentage of HIV infected people in each country receives antiretroviral therapy, with darker green representing higher percentage of people receiving ART. The slide bar above also allows to filter by years from 2000 to 2017. It shows that ART coverage has significantly increased in almost all countries within this time span. In 2000, only Australia and a few west European countries have over 30% ART coverage. In 2017 most countries reached this level, and especially African counties have shown significant growth in ART coverage. For example, from 0% in Zimbabwe in 2000 to 84% in 2017.
+ "),
     sliderInput(inputId = "year_choose",
                 label = "Choose a year",
                 value = 2017, min = 2000, max = 2017, width = "700px"),
@@ -208,7 +207,7 @@ ui <- fluidPage(
 
 #-------------------------------------------------------------------------  
   h4("Education on AIDS prevetion among young people"),
-    p("The number of people who receive ART has increased significantly in recent years, especially in African countries where the prevalence of HIV/AIDS is the highest. You can see this in the map. In 2005 only 2 million people received ART; by 2018 this figure has increased more than ten-fold to 23 million.11"),
+    p("TEducation on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
     plotOutput(outputId = "educ_graph",
                height = "400px",
                width = "700px"),
