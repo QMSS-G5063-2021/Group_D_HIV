@@ -1,7 +1,7 @@
 # Group_D_HIV
 Project Topic: Global Distribution of HIV, severity and prevention
 
-Introdctioin:
+Introduction:
 HIV/AIDS is one of the world’s most fatal infectious diseases – particularly across Sub-Saharan Africa, where the disease has had a massive impact on health outcomes and life expectancy in recent decades. Ou group aims to identify and visualize the following with 8 ineactive graphs:
   1)worldwide distribution of HIV, 
   2) worldwide death caused by HIV, 
