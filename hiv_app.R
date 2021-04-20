@@ -207,7 +207,7 @@ From this interactive map of ART coverage of the world, it shows what percentage
 
 #-------------------------------------------------------------------------  
   h4("Education on AIDS prevetion among young people"),
-    p("TEducation on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
+    p("Education on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
     plotOutput(outputId = "educ_graph",
                height = "400px",
                width = "700px"),
