@@ -3,7 +3,7 @@
 ## Project Topic: Global Distribution of HIV, severity and prevention
 
 ### Introduction:
-HIV/AIDS is one of the world’s most fatal infectious diseases – particularly across Sub-Saharan Africa, where the disease has had a massive impact on health outcomes and life expectancy in recent decades. Ou group aims to identify and visualize the following with 8 ineactive graphs:
+HIV/AIDS is one of the world’s most fatal infectious diseases – particularly across Sub-Saharan Africa, where the disease has had a massive impact on health outcomes and life expectancy in recent decades. Ou group aims to identify and visualize the following with 8 interactive graphs:
   1)worldwide distribution of HIV, 
   2) worldwide death caused by HIV, 
   3) prevention of HIV and 
@@ -11,6 +11,8 @@ HIV/AIDS is one of the world’s most fatal infectious diseases – particularly
 
 ### Data:
 https://ourworldindata.org/hiv-aids#education-on-hiv-aids
+7 datasets fom this website was used to create maps, line plot and bar plot
+Also used tweets data related to HIV from Twitter for text analysis 
 
 
 ### Group members: Tong Shen, Zehui Wang, Wenxuan Zhang
