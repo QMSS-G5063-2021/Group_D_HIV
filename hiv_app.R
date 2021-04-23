@@ -308,9 +308,12 @@ server <- function(input, output){
       z = ~Prevalence, 
       color = ~Prevalence, 
       colors = 'Blues',
-      text = ~Entity, 
+      text = ~paste('</br> Country: ', Entity,
+                    '</br> Share of Pop: ', round(Prevalence, digits = 2), "%",
+                    '</br> Code: ', Code), 
       locations = ~Code, 
-      marker = list(line = l)
+      marker = list(line = l),
+      hoverinfo = "text"
     )
     fig <- fig %>% colorbar(title = 'Share of infected population', 
                             ticksuffix = '%', 
@@ -336,8 +339,15 @@ server <- function(input, output){
     )
     fig <- plot_geo(newcasemap_year)
     fig <- fig %>% add_trace(
-      z = ~Incidence, color = ~Incidence, colors = 'Blues',
-      text = ~Entity, locations = ~Code, marker = list(line = l)
+      z = ~Incidence, 
+      color = ~Incidence, 
+      colors = 'Blues',
+      text = ~paste('</br> Country: ', Entity,
+                    '</br> # of New Case: ', round(Incidence, digits = 2),
+                    '</br> Code: ', Code), 
+      locations = ~Code, 
+      marker = list(line = l),
+      hoverinfo = "text"
     )
     fig <- fig %>% colorbar(title = 'Number of New Infections Each Year', thickness = 15)
     fig <- fig %>% layout(
@@ -363,9 +373,12 @@ server <- function(input, output){
       z = ~share_death, 
       color = ~share_death, 
       colors = 'Reds',
-      text = ~Entity, 
+      text = ~paste('</br> Country: ', Entity,
+                    '</br> Share of Pop: ', round(share_death, digits = 2), "%",
+                    '</br> Code: ', Code), 
       locations = ~Code, 
-      marker = list(line = l)
+      marker = list(line = l),
+      hoverinfo = "text"
     )
     fig <- fig %>% colorbar(title = 'Share of Death population', 
                             ticksuffix = '%', 
@@ -450,8 +463,15 @@ server <- function(input, output){
     
     p <- plot_geo(artmap_year)
     p <- p %>% add_trace(
-      z = ~Coverage, color = ~Coverage, colors = 'Greens',
-      text = ~Entity, locations = ~Code, marker = list(line = line)
+      z = ~Coverage, 
+      color = ~Coverage, 
+      colors = 'Greens',
+      text = ~paste('</br> Country: ', Entity,
+                    '</br> ART Coverage: ', Coverage, "%",
+                    '</br> Code: ', Code), 
+      locations = ~Code, 
+      marker = list(line = line),
+      hoverinfo = "text"
     )
     p <- p %>% colorbar(title = 'ART Coverage', ticksuffix = '%', thickness = 15)
     p <- p %>% layout(
