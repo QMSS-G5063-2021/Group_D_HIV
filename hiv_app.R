@@ -404,7 +404,7 @@ server <- function(input, output){
       geom_point() +
       labs(title="Top 8 Counties with Most Severly HIV Death Rates",
            x="Year",
-           y="Death Rate of the Country, For All Age Groups",
+           y="Death Rate of the Country, For All Age Groups (%)",
            color = "Country",
            caption = "Source: https://ourworldindata.org/hiv-aids#the-global-distribution-of-deaths-from-hiv-aids") +
       theme(legend.position = 'top', 
@@ -421,7 +421,7 @@ server <- function(input, output){
       geom_point() +
       labs(title="HIV Death Rate Worldwide Among Different Age Groups",
            x="Year",
-           y="HIV Death Rate Worldwide",
+           y="HIV Death Rate Worldwide (%)",
            color = "Age Group",
            caption = "Source: https://ourworldindata.org/hiv-aids#the-global-distribution-of-deaths-from-hiv-aids") +
       theme(legend.position = 'top', 
@@ -508,7 +508,7 @@ server <- function(input, output){
       geom_jitter() +
       geom_smooth() +
       labs(title="HIV Death Rate (per 100,000) with Respect to ART Coverage",
-           x="ART Coverage Rate",
+           x="ART Coverage Rate (%)",
            y="HIV Death Rate in A Country",
            caption = "Source: https://ourworldindata.org/hiv-aids#the-global-distribution-of-deaths-from-hiv-aids") +
       theme(legend.position = 'top', 
