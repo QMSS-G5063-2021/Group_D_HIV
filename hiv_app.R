@@ -45,8 +45,9 @@ art2 <- art2 %>%
 
 educ <- read_csv("data/educ_hiv.csv")
 
+
 colnames(art)[4] <- "Coverage"
-colnames(educ)[4] <- "Knowledge"
+colnames(educ)[4] <- "HIV Prevention Education Coverage"
 
 death_rate_art <- right_join(x=death_rate_all,
                              y=art2,
@@ -69,7 +70,7 @@ share_death <- share_death %>% filter(Entity != "World")
 death_rates_age <- death_rates_age %>% drop_na(Code)
 death_rates_age <- death_rates_age %>% filter(Entity != "World")
 
-educ <- educ %>% arrange(desc(Knowledge)) %>%
+educ <- educ %>% arrange(desc(`HIV Prevention Education Coverage`)) %>%
   top_n(10)    
 educ$Entity <- factor(educ$Entity, levels = c("Antigua and Barbuda", "Malawi", "Belize", "Peru",
                                               "Lithuania", "Cameroon", "Kenya", "Namibia", "Mauritania", "Eswatini"))
@@ -233,7 +234,7 @@ From this interactive map of ART coverage of the world, it shows what percentage
 
 #-------------------------------------------------------------------------  
   h4("Education on AIDS prevetion among young people"),
-    p("Education on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
+    p("Education on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of young people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
     plotOutput(outputId = "educ_graph",
                height = "400px",
                width = "700px"),
@@ -464,12 +465,12 @@ server <- function(input, output){
   #output for educ graph  
   output$educ_graph<- renderPlot({
     
-    fig <- ggplot(educ, aes(Entity, Knowledge)) + 
-      geom_col(aes(fill=Knowledge)) +
+    fig <- ggplot(educ, aes(Entity, `HIV Prevention Education Coverage`)) + 
+      geom_col(aes(fill=`HIV Prevention Education Coverage`)) +
+      scale_fill_distiller(palette = "Blues", guide = FALSE, direction = 1) +
       labs(title="HIV Education",
            x="country",
-           y="HIV education coverage rate",
-           color = "Country",
+           y="% of young population with AIDS Prevention Knowledge",
            caption = "Source: https://ourworldindata.org/hiv-aids#the-global-distribution-of-deaths-from-hiv-aids") +
       theme(legend.position = 'top', 
             plot.title = element_text(colour = alpha('black')))
