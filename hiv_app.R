@@ -233,8 +233,8 @@ From this interactive map of ART coverage of the world, it shows what percentage
                  width = "900px"),
 
 #-------------------------------------------------------------------------  
-  h4("Education on AIDS prevetion among young people"),
-    p("Education on HIV prevention to young population is also a effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with highest share of young people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
+  h4("Education on AIDS Prevention among young people"),
+    p("Education on HIV prevention to the young population is also an effective and crucial way to reduce HIV infection rate in a country. This bar chart contains the top 10 counties with the highest share of young people with knowledge on HIV prevention. The result shows that Antigua and Barbuda have the highest percentage and followed by Malawi, Belize, Peru and Lithuania."),
     plotOutput(outputId = "educ_graph",
                height = "400px",
                width = "700px"),
@@ -262,7 +262,7 @@ From this interactive map of ART coverage of the world, it shows what percentage
 #------------------------------------------------------------------------- 
 h2("Does ART really decrease Death Rate?"),
 p("Though the line's slope is not that significant, by selecting different years, it is clear that ART helps a lot to decrease the Death Rate of HIV. Especially, if we choose years around 2000 to 2010, the ART is negatively correlated with HIV Death Rate for ART coverage > 0.1 (10%). 
-  Another information we can get from this plot is that, only if the ART coveragge is higher than 10%, it would save people's life. "),
+  Another piece of information we can get from this plot is that, only if the ART coverage is higher than 10%, it would save people's life."),
 
     sliderInput(inputId = "year_choose_2",
                 label = "Choose a year",
