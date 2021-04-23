@@ -131,11 +131,9 @@ ui <- fluidPage(
   h2("HIV Worldwide Distribution"),
   h4("Share of Population Infected with HIV"),    
     p("From the interactive plot of Share of population infected with HIV, we can clearly identify the trends of spreading of HIV. 
-      In the 90s, share of infected population was comparably lower, with only 2 countries exceeding 10% (Uganda 14.21% and Zimbabwe 14.12%) The distribution of high density of HIV generally located at the middle-south part of Africa.
-      "),
-    p("Around 2000, the southern part suffered most from HIV population proportion: multiple countries exceeded 10% share of infected population with the highest being Botswana, 26.67%
-      The HIV share in Africa reached its peak in 2004. Then HIV began to spread to other continents at a quicker pace. For example, share of population in Russia was 0.2% in 2004, and went all the way up to 1.36% in 2017. Many other regions such as South-eastern Asia and South America also appeared to have an increased share of infected population, proving that the spread of HIV is speeding up.
-      "),
+      In the 90s, the share of the infected population was comparably lower, with only 2 countries exceeding 10% (Uganda 14.21% and Zimbabwe 14.12%) The distribution of high density of HIV is generally located in the middle-south part of Africa."),
+    p("Around 2000, the southern part suffered most from HIV population proportion: multiple countries exceeded 10% share of the infected population with the highest being Botswana, 26.67% The HIV share in Africa reached its peak in 2004. Then HIV began to spread to other continents at a quicker pace. For example, the share of population in Russia was 0.2% in 2004, and went all the way up to 1.36% in 2017. 
+      Many other regions such as South-eastern Asia and South America also appeared to have an increased share of infected population, proving that the spread of HIV is speeding up."),
     #create a slider with year in data range (1990-2017)
     sliderInput(inputId = "year1",
                 label = "Choose a year",
@@ -152,8 +150,8 @@ ui <- fluidPage(
 
 #-------------------------------------------------------------------------   
   h4("Number of New Infections Each Year"),
-    p("Combined with previous graphs, it is not hard for us to infer that the newly diagnosed HIV cases has been increasing, too. However, since this plot focuses on the magnitude of new infections, it shows some interesting patterns not obvious in other graphs: For example, in terms of the absolute number of infection cases, countries with higher population such as United States, China, India and Brazil played significant role on the world stage. 
-       "),
+    p("Combined with previous graphs, it is not hard for us to infer that the newly diagnosed HIV cases have been increasing, too. 
+      However, since this plot focuses on the magnitude of new infections, it shows some interesting patterns not obvious in other graphs: For example, in terms of the absolute number of infection cases, countries with a higher population such as United States, China, India and Brazil played a significant role on the world stage. "),
        p("Also, through the choropleth map we can see that the new infection cases have not always been increasing. One possible explanation is that some effective treatment and preventions may help keep the new infection numbers under control.
         "),
     #create a slider with year in data range (1990-2017)
@@ -180,9 +178,8 @@ ui <- fluidPage(
         But across some countries – focused primarily in Southern Sub-Saharan Africa – the share is very high. 
         More than 1-in-4 of deaths (28%) in South Africa and Botswana were caused by HIV/AIDS in 2017. 
         The share was also very high across Mozambique (24%); Namibia (23%); Zambia (18%); Kenya (17%); and Congo (15%)."),
-    p("If we use the slider and choose a different year as the input, 
-       we can see that the share of death increased significantly since 1994, in some countries the share of death even reached 60%.
-       The upward trend did not stop until the Year 2006, and after Year 2006, the death share fianlly began to decrease."),
+    p("If we use the slider and choose a different year as the input, we can see that the share of death increased significantly since 1994, 
+      in some countries the share of death even reached 60%. The upward trend did not stop until the Year 2006, and after Year 2006, the death share finally began to decrease."),
     
     sliderInput(inputId = "year",
                 label = "Choose a year",
@@ -197,7 +194,7 @@ ui <- fluidPage(
                  width = "900px"),
 
 #-------------------------------------------------------------------------
-  h4("Death Rate among the most Severly HIV Infected Countries"),
+  h4("Death Rate among the most Severely HIV Infected Countries"),
     p("The large health burden of HIV/AIDS across Sub-Saharan Africa is also reflected in death rates. 
       Death rates measure the number of deaths from HIV/AIDS per 100,000 individuals in a country or region.
       If we take a further look at the Death Rate of HIV, 
@@ -209,10 +206,10 @@ ui <- fluidPage(
                    width = "900px"),
 
   h4("HIV Death Rate Worldwide for Different Age Groups"),
-    p("In the chart we show death rates by age group. 
-      We can see that baby <5 years old and yound adults 15-49 are most risky groups.
-      Since HIV is primarily a sexually-transmitted infection, where unsafe sex is a primary risk factor, this is what we would expect for age 15-49 group.
-      But we also see that death rates are higher for young children <5 years old. 
+    p("In the chart, we show death rates by age group. 
+    We can see that baby <5 years old and young adults 15-49 are the riskiest groups. 
+    Since HIV is primarily a sexually transmitted infection, where unsafe sex is a primary risk factor, this is what we would expect for the age 15-49 group. 
+    But we also see that death rates are higher for young children <5 years old. This is because HIV can be transmitted from mother-to-child if the mother is infected.In the chart, we show death rates by age group. We can see that baby <5 years old and young adults 15-49 are the riskiest groups. Since HIV is primarily a sexually transmitted infection, where unsafe sex is a primary risk factor, this is what we would expect for the age 15-49 group. But we also see that death rates are higher for young children <5 years old. 
       This is because HIV can be transmitted from mother-to-child if the mother is infected."),
       plotlyOutput(outputId = "death_rate_age",
                    height = "500px",
@@ -220,9 +217,11 @@ ui <- fluidPage(
 #------------------------------------------------------------------------- 
   h2("HIV Can Be Prevented "), 
   h4("Antiretroviral Therapy Coverage of Infected Population"), 
-    p("Antiretroviral therapy (ART) is a mixture of antiviral drugs that are used to treat people infected with HIV. It allows people with HIV to live longer and prevents new HIV infections. Thanks to antiretroviral therapy (ART), people with HIV/AIDS can expect to live long lives. 
-From this interactive map of ART coverage of the world, it shows what percentage of HIV infected people in each country receives antiretroviral therapy, with darker green representing higher percentage of people receiving ART. The slide bar above also allows to filter by years from 2000 to 2017. It shows that ART coverage has significantly increased in almost all countries within this time span. In 2000, only Australia and a few west European countries have over 30% ART coverage. In 2017 most countries reached this level, and especially African counties have shown significant growth in ART coverage. For example, from 0% in Zimbabwe in 2000 to 84% in 2017.
- "),
+    p("Antiretroviral therapy (ART) is a mixture of antiviral drugs that are used to treat people infected with HIV. 
+    It allows people with HIV to live longer and prevents new HIV infections. Thanks to antiretroviral therapy (ART), people with HIV/AIDS can expect to live long lives. 
+    This interactive map of ART coverage of the world shows what percentage of HIV-infected people in each country receive antiretroviral therapy, with darker green representing a higher percentage of people receiving ART. The slide bar above also allows filtering by years from 2000 to 2017. It shows that ART coverage has significantly increased in almost all countries within this time span. In 2000, only Australia and a few west European countries have over 30% ART coverage. In 2017 most countries reached this level, and especially African counties have shown significant growth in ART coverage. 
+      For example, from 0% in Zimbabwe in 2000 to 84% in 2017."),
+
     sliderInput(inputId = "year_choose",
                 label = "Choose a year",
                 value = 2017, min = 2000, max = 2017, width = "700px",
